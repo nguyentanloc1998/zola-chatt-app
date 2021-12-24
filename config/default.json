@@ -1,11 +1,11 @@
 {
     "mysql":{
         "connectionLimit": 10,
-        "host":"zola-app.c84qjabbwvv0.ap-southeast-1.rds.amazonaws.com",
+        "host":"localhost",
     "port":"3306",
-    "user":"admin",
-    "password":"123456789",
-    "database":"zola_app"
+    "user":"root",
+    "password":"locrty123",
+    "database":"thongtinkhachhang"
     },
     "authentication":{
         "saltRounds":4

@@ -66,6 +66,11 @@ io.on('connection',(socket)=>{
          users[my_user] = socket.id;
         console.log(socket.id);
      })
+     //cong cho chat group
+     socket.on('john_group', async room =>{
+      socket.join(room);
+       console.log(socket.id);
+    })
      //1-1 gui anh
      socket.on('guianh',async (thongtin) =>{
       if(users[thongtin.id_banbe]===" "){
@@ -106,11 +111,6 @@ io.on('connection',(socket)=>{
           "trangthai":'hoạt động'
       }
        await table_tinnhan.add(entity);
-     })
-     //cong cho chat group
-     socket.on('john_group', async room =>{
-       socket.join(room);
-        console.log(socket.id);
      })
      socket.on('guianh_group',async (room,thongtin) =>{
      if(room === " "){
@@ -537,8 +537,8 @@ app.use('/',require('./router/login/dangnhap'));
 //app.get('/',(req,res)=>{
 //    return res.render('dangNhap');
 //})
-var port = process.env.PORT || 3000
-
+//
+const port = process.env.PORT || 3000
 server.listen(port,()=>{
     console.log('server running');
 })

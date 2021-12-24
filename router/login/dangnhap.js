@@ -385,42 +385,46 @@ router.post('/nhomchat',async (req,res)=>{
     }
     console.log(entity);
     const sosanhtennhom = await table_nhom.timkiemallnhombyid(req.session.AuthUser.ma_tk);
+    // console.log(sosanhtennhom.length);
     let a=0
-    for(let i=0; i<sosanhtennhom.length;i++){
-        if(sosanhtennhom[i].tennhom===ds_group.ten_nhom){
-            a++;
-            res.send({tennhom: 'thatbai'});
+    if(sosanhtennhom){
+        for(let i=0; i<sosanhtennhom.length;i++){
+            if(sosanhtennhom[i].tennhom===ds_group.ten_nhom){
+                a++;
+                res.send({tennhom: 'thatbai'});
+            }
         }
+        // console.log(a);
+        if(a===0){
+             await table_nhom.add(entity);
+        const id_nhom = await table_nhom.single(ds_group.ten_nhom);
+        let id_nhomm = id_nhom.map(a=> a.id_nhom);
+        const add_mygroup={
+            "id_tk":req.session.AuthUser.ma_tk,
+            "id_nhom":id_nhomm[0],
+            "thoigian":ds_group.thoigian,
+            "noidung":'Hi',
+            "loaitinnhan":'vanban',
+            "trangthai":'thu hồi'
+        }   
+       await table_tk_nhom.add(add_mygroup);
+        for(let i=0;i<ds_group.id_banbe.length;i++){
+        const entity1 = {
+            "id_tk":ds_group.id_banbe[i],
+            "id_nhom":id_nhomm[0],
+            "thoigian":ds_group.thoigian,
+            "noidung":'Hi',
+            "loaitinnhan":'vanban',
+            "trangthai":'thu hồi'
+        }
+        console.log(entity1);
+       await table_tk_nhom.add(entity1);
+        }  
+        res.send({tennhom: ds_group.ten_nhom});
+        }
+      
     }
-    console.log(a);
-    if(a===0){
-         await table_nhom.add(entity);
-    const id_nhom = await table_nhom.single(ds_group.ten_nhom);
-    let id_nhomm = id_nhom.map(a=> a.id_nhom);
-    const add_mygroup={
-        "id_tk":req.session.AuthUser.ma_tk,
-        "id_nhom":id_nhomm[0],
-        "thoigian":ds_group.thoigian,
-        "noidung":'Hi',
-        "loaitinnhan":'vanban',
-        "trangthai":'hoạt động'
-    }
-   await table_tk_nhom.add(add_mygroup);
-    for(let i=0;i<ds_group.id_banbe.length;i++){
-    const entity1 = {
-        "id_tk":ds_group.id_banbe[i],
-        "id_nhom":id_nhomm[0],
-        "thoigian":ds_group.thoigian,
-        "noidung":'Hi',
-        "loaitinnhan":'vanban',
-        "trangthai":'hoạt động'
-    }
-    console.log(entity1);
-   await table_tk_nhom.add(entity1);
-    }  
-    res.send({tennhom: ds_group.ten_nhom});
-    }
-  
+    
   });
 router.get('/nhomchat',async (req,res)=>{
     const user = await table_tk_nhom.singlebytkbytennhom(req.session.AuthUser.ma_tk);
@@ -433,11 +437,10 @@ router.get('/danhsachnhantingroup/:tennhom',async (req,res)=>{
     const tennhomm =await table_tk_nhom.loadalltinnhan(req.params.tennhom);  
    res.send({nhomchat: tennhomm});
   });  
-
 router.get('/loadhinhanh/:tennhom',async (req,res)=>{
     const all_id = await table_tk_nhom.loadidtennhom(req.params.tennhom);
     const tatcatinnhan = await table_tk_nhom.demtinnhantatca(req.params.tennhom);
-    console.log(tatcatinnhan);
+    console.log(all_id);
     const tt={
         id:all_id,
         tatcatinnhan:tatcatinnhan
@@ -464,7 +467,7 @@ router.post('/thembanvaogroup',async (req,res)=>{
         "thoigian":thongtin.thoigian,
         "noidung":'Hi',
         "loaitinnhan":'vanban',
-        "trangthai":'hoạt động'
+        "trangthai":'thu hồi'
     }
     console.log(add_mygroup);
     await table_tk_nhom.add(add_mygroup);

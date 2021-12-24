@@ -711,7 +711,7 @@ $(function(){
                         var z = document.createElement("option");
                         z.value='thu hồi'
                         var t = document.createTextNode("Thu hồi");
-                        x.addEventListener('click',function thuhoitinnhan(e){
+                        x.addEventListener('change',function thuhoitinnhan(e){
                             e.preventDefault();
                             let b= document.querySelector('#mySelect').value;
                             if(b==='thu hồi'){
@@ -852,7 +852,7 @@ $(function(){
                         var z = document.createElement("option");
                         z.value='thu hồi'
                         var t = document.createTextNode("Thu hồi");
-                        x.addEventListener('click',function thuhoitinnhan(e){
+                        x.addEventListener('change',function thuhoitinnhan(e){
                             e.preventDefault();
                             let b= document.querySelector('#mySelect').value;
                             if(b==='thu hồi'){
@@ -991,7 +991,7 @@ $(function(){
                         var z = document.createElement("option");
                         z.value='thu hồi'
                         var t = document.createTextNode("Thu hồi");
-                        x.addEventListener('click',function thuhoitinnhan(e){
+                        x.addEventListener('change',function thuhoitinnhan(e){
                             e.preventDefault();
                             let b= document.querySelector('#mySelect').value;
                             if(b==='thu hồi'){
@@ -1076,7 +1076,7 @@ $(function(){
                         var z = document.createElement("option");
                         z.value='thu hồi'
                         var t = document.createTextNode("Thu hồi");
-                        x.addEventListener('click',function thuhoitinnhan(e){
+                        x.addEventListener('change',function thuhoitinnhan(e){
                             e.preventDefault();
                             let b= document.querySelector('#mySelect').value;
                             if(b==='thu hồi'){
@@ -2166,7 +2166,7 @@ $(function(){
                         var z = document.createElement("option");
                         z.value='thu hồi'
                         var t = document.createTextNode("Thu hồi");
-                        x.addEventListener('click',function thuhoitinnhan(e){
+                        x.addEventListener('change',function thuhoitinnhan(e){
                             e.preventDefault();
                             let b= document.querySelector('#mySelect').value;
                             if(b==='thu hồi'){
@@ -2350,7 +2350,7 @@ $(function(){
                              var z = document.createElement("option");
                              z.value='thu hồi'
                              var t = document.createTextNode("Thu hồi");
-                             x.addEventListener('click',function thuhoitinnhan(e){
+                             x.addEventListener('change',function thuhoitinnhan(e){
                                  e.preventDefault();
                                  let b= document.querySelector('#mySelect').value;
                                  if(b==='thu hồi'){
@@ -2433,7 +2433,7 @@ $(function(){
                              var z = document.createElement("option");
                              z.value='thu hồi'
                              var t = document.createTextNode("Thu hồi");
-                             x.addEventListener('click',function thuhoitinnhan(e){
+                             x.addEventListener('change',function thuhoitinnhan(e){
                                  e.preventDefault();
                                  let b= document.querySelector('#mySelect').value;
                                  if(b==='thu hồi'){
@@ -2559,7 +2559,7 @@ $(function(){
                             var z = document.createElement("option");
                             z.value='thu hồi'
                             var t = document.createTextNode("Thu hồi");
-                            x.addEventListener('click',function thuhoitinnhan(e){
+                            x.addEventListener('change',function thuhoitinnhan(e){
                                 e.preventDefault();
                                 let b= document.querySelector('#mySelect').value;
                                 if(b==='thu hồi'){
